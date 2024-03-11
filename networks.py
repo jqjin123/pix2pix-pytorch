@@ -126,7 +126,7 @@ class Inconv(nn.Module):
     def __init__(self, in_ch, out_ch, norm_layer, use_bias):
         super(Inconv, self).__init__()
         self.inconv = nn.Sequential(
-            nn.ReflectionPad2d(3),
+            nn.ReflectionPad2d(3),  # 反射填充 (为了避免边界效应)
             nn.Conv2d(in_ch, out_ch, kernel_size=7, padding=0,
                       bias=use_bias),
             norm_layer(out_ch),
